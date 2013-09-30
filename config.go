@@ -11,6 +11,8 @@ type Config struct {
 	// example: interface:port
 	Address string
 
+	// The Access struct contains information about what should be
+	// served via HTTP.
 	Access struct {
 		// EnableFrontEnd is a bool that determins if the
 		// front-end interface should be viewed or not. By
@@ -23,6 +25,18 @@ type Config struct {
 		// someone decides to hault service. By default this
 		// is set to true.
 		EnableAPI bool
+	}
+
+	// The Database struct contains information about the
+	// database.
+	Database struct {
+		// Driver is the type of database that we are
+		// using. For example, by default we use sqlite3.
+		Driver string
+		
+		// Resource is the name of the database that we are
+		// looking for to use.
+		Resource string
 	}
 }
 
