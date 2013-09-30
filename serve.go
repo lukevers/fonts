@@ -26,6 +26,9 @@ func Serve(config *Config) {
 	//	t = template.Must(template.ParseGlob("templates/*.html"))
 	}
 
+	// Add the handler for the fonts
+	http.HandleFunc("/fonts", HandleFonts)
+
 	// Listen and serve
 	http.ListenAndServe(config.Address, nil)
 }
@@ -34,6 +37,11 @@ func Serve(config *Config) {
 // static directory
 func HandleAssets(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, r.URL.Path[1:])
+}
+
+// HandleFonts is a static file server that serves all fonts
+func HandleFonts(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "googlefontdirectory/"+r.URL.Path[1:])
 }
 
 // HandleRoot handles the "/" connections

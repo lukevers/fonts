@@ -11,7 +11,14 @@ func HandleCSS(w http.ResponseWriter, r *http.Request) {
 		l.Emergf("Could not parse query: %s", err)
 	}
 	file := v.Get("name")
-	// TODO
-	// - [ ] Check if name exists in database
-	// - [ ] Serve css if so
+	
+	content := 
+`
+@font-face {
+  font-family: `+file+`;
+  src: url(
+}
+`
+
+	println(content)
 }
