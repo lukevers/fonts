@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/inhies/go-log"
 	"fmt"
+	"os"
 )
 
 var (
@@ -27,5 +28,6 @@ func main() {
 		os.Exit(1)
 	}
 	
-	
+	// Start HTTP server
+	Serve(config)
 }
