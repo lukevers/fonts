@@ -11,6 +11,10 @@ type Config struct {
 	// example: interface:port
 	Address string
 
+	// The URL is a string that contains the website that the is
+	// used for the src in http://site.tld form
+	URL string
+
 	// The Access struct contains information about what should be
 	// served via HTTP.
 	Access struct {

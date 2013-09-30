@@ -13,9 +13,14 @@ var (
 	LogFile  = os.Stdout
 )
 
+var (
+	Conf *Config
+	err error
+)
+
 func main() {
 	// Parse the config file
-	config, err := ReadConfig("fonts.conf")
+	Conf, err = ReadConfig("fonts.conf")
 	if err != nil {
 		fmt.Printf("Could not read configuration file: %s", err)
 		os.Exit(1)
@@ -29,5 +34,5 @@ func main() {
 	}
 	
 	// Start HTTP server
-	Serve(config)
+	Serve()
 }

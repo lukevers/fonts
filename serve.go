@@ -10,15 +10,15 @@ var (
 )
 
 // Serve starts the HTTP server
-func Serve(config *Config) {
+func Serve() {
 	// Start the API if enabled
-	if config.Access.EnableAPI {
+	if Conf.Access.EnableAPI {
 		l.Info("Starting API")
 		http.HandleFunc("/css", HandleCSS)
 	}
 	
 	// Start the front-end if enabled
-	if config.Access.EnableFrontEnd {
+	if Conf.Access.EnableFrontEnd {
 		l.Info("Starting front-end")
 		http.HandleFunc("/", HandleRoot)
 		http.HandleFunc("/assets", HandleAssets)
@@ -30,7 +30,7 @@ func Serve(config *Config) {
 	http.HandleFunc("/fonts", HandleFonts)
 
 	// Listen and serve
-	http.ListenAndServe(config.Address, nil)
+	http.ListenAndServe(Conf.Address, nil)
 }
 
 // HandleAssets is a static file server that serves everything in
