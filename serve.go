@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"html/templates"
+	"html/template"
 )
 
 var (
@@ -14,7 +14,7 @@ func Serve(config *Config) {
 	// Start the API if enabled
 	if config.Access.EnableAPI {
 		l.Info("Starting API")
-		// TODO
+		http.HandleFunc("/css", HandleCSS)
 	}
 	
 	// Start the front-end if enabled
@@ -23,7 +23,7 @@ func Serve(config *Config) {
 		http.HandleFunc("/", HandleRoot)
 		http.HandleFunc("/assets", HandleAssets)
 		// Compile templates
-		t = template.Must(template.ParseGlob("templates/*.html"))
+	//	t = template.Must(template.ParseGlob("templates/*.html"))
 	}
 
 	// Listen and serve
@@ -36,7 +36,7 @@ func HandleAssets(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, r.URL.Path[1:])
 }
 
-// HandleRoot 
+// HandleRoot handles the "/" connections
 func HandleRoot(w http.ResponseWriter, r *http.Request) {
 	
 }
