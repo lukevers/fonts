@@ -1,0 +1,3 @@
+[submodule "googlefontdirectory"]
+	path = googlefontdirectory
+	url = git://github.com/w0ng/googlefontdirectory.git
