@@ -34,5 +34,5 @@ func main() {
 	}
 	
 	// Start HTTP server
-	Serve()
+	Serve(Conf)
 }

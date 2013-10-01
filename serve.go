@@ -10,13 +10,13 @@ var (
 )
 
 // Serve starts the HTTP server
-func Serve() {
+func Serve(Conf *Config) {
 	// Start the API if enabled
 	if Conf.Access.EnableAPI {
 		l.Info("Starting API")
 		http.HandleFunc("/css", HandleCSS)
 	}
-	
+
 	// Start the front-end if enabled
 	if Conf.Access.EnableFrontEnd {
 		l.Info("Starting front-end")
@@ -25,9 +25,9 @@ func Serve() {
 		// Compile templates
 	//	t = template.Must(template.ParseGlob("templates/*.html"))
 	}
-
+	
 	// Add the handler for the fonts
-	http.HandleFunc("/fonts", HandleFonts)
+	http.HandleFunc("/fonts/", HandleFonts)
 
 	// Listen and serve
 	http.ListenAndServe(Conf.Address, nil)
