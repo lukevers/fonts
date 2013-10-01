@@ -41,7 +41,7 @@ func HandleAssets(w http.ResponseWriter, r *http.Request) {
 
 // HandleFonts is a static file server that serves all fonts
 func HandleFonts(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/x-font-ttf")
+	w.Header().Set("Content-Type", "font/ttf")
 	http.ServeFile(w, r, "googlefontdirectory/"+r.URL.Path[1:])
 }
 

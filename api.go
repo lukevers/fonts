@@ -13,8 +13,8 @@ func HandleCSS(w http.ResponseWriter, r *http.Request) {
 	file := v.Get("name")
 	
 	content := `@font-face {
-  font-family: `+file+`;
-  src: url(`+Conf.URL+`/fonts/`+file+`.ttf) format('ttf');
+  font-family: '`+file+`';
+  src: local('`+file+`'), url(`+Conf.URL+`/fonts/`+file+`.ttf) format('ttf');
 }`
 	w.Header().Set("Content-Type", "text/css")
 	w.Write([]byte(content))
