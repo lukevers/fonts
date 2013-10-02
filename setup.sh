@@ -1,6 +1,9 @@
 #!/bin/bash
 
-convert.pe --format ".woff" googlefontdirectory/fonts/*.ttf
-convert.pe --format ".otf" googlefontdirectory/fonts/*.ttf
-convert.pe --format ".eot" googlefontdirectory/fonts/*.ttf
-convert.pe --format ".svg" googlefontdirectory/fonts/*.ttf
+for i in "googlefontdirectory/fonts/*.ttf"
+do 
+    convert.pe --format ".woff" $i
+    convert.pe --format ".otf" $i
+    convert.pe --format ".eot" $i
+    convert.pe --format ".svg" $i
+done
