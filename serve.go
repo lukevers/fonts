@@ -23,7 +23,7 @@ func Serve(Conf *Config) {
 		http.HandleFunc("/", HandleRoot)
 		http.HandleFunc("/assets", HandleAssets)
 		// Compile templates
-	//	t = template.Must(template.ParseGlob("templates/*.html"))
+		t = template.Must(template.ParseGlob("templates/*.html"))
 	}
 	
 	// Add the handler for the fonts
@@ -48,5 +48,5 @@ func HandleFonts(w http.ResponseWriter, r *http.Request) {
 
 // HandleRoot handles the "/" connections
 func HandleRoot(w http.ResponseWriter, r *http.Request) {
-	
+	t.ExecuteTemplate(w, "index", nil)
 }
