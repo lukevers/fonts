@@ -10,11 +10,10 @@ func HandleCSS(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		l.Emergf("Could not parse query: %s", err)
 	}
-	file := v.Get("name")
-	
+
 	content := `@font-face {
-  font-family: '`+file+`';
-  src: local('`+file+`'), url(`+Conf.URL+`/fonts/`+file+`.ttf) format('ttf');
+  font-family: `+v.Get("family")+`;
+  src: url(`+Conf.URL+`/fonts/`+v.Get("family")+`.woff) format('woff'), url(`+Conf.URL+`/fonts/`+v.Get("family")+`.ttf) format('ttf'), url(`+Conf.URL+`/fonts/`+v.Get("family")+`.otf) format('otf'), url(`+Conf.URL+`/fonts/`+v.Get("family")+`.eot) format('eot'), url(`+Conf.URL+`/fonts/`+v.Get("family")+`.svg) format('svg');
 }`
 	w.Header().Set("Content-Type", "text/css")
 	w.Write([]byte(content))
